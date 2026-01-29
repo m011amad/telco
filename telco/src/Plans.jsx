@@ -9,7 +9,7 @@ const PhonePlans = () => {
       name: "150GB",
       price: 79,
       months: 24,
-      giftCard: isSMB ? 700 : 550, // SMB logic
+      giftCard: isSMB ? 700 : 550, // SMB (business) logic
     },
     {
       name: "300GB",
