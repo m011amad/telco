@@ -1,0 +1,20 @@
+# netlify.toml
+# Build configuration for your nested Vite React project
+
+[build]
+# Tell Netlify the base directory of your project
+base = "telco"
+# Install dependencies and build inside the base folder
+command = "npm install && npm run build"
+# Folder to publish (dist is inside the base folder)
+publish = "dist"
+
+[build.environment]
+# Node version for Netlify to use
+NODE_VERSION = "20"
+
+# SPA redirect: ensures React Router works for all paths
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
