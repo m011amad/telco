@@ -1,36 +1,75 @@
-import React from "react";
-
-const plans = [
-  { name: "60GB", price: 64, months: 24, giftCard: 0 },
-  { name: "150GB", price: 79, months: 24, giftCard: 550 },
-  {
-    name: "300GB",
-    price: 99,
-    months: 24,
-    giftCard: 1100,
-    discount: 10, // $10 discount per month
-  },
-];
+import React, { useState } from "react";
 
 const PhonePlans = () => {
+  const [isSMB, setIsSMB] = useState(false); // Toggle for 150GB plan
+
+  const plans = [
+    { name: "60GB", price: 64, months: 24, giftCard: 0 },
+    {
+      name: "150GB",
+      price: 79,
+      months: 24,
+      giftCard: isSMB ? 700 : 550, // SMB logic
+    },
+    {
+      name: "300GB",
+      price: 99,
+      months: 24,
+      giftCard: 1100,
+      discount: 10, // $10 discount per month
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <h1 className="text-3xl font-bold mb-8">Compare Phone Plans</h1>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl px-4">
         {plans.map((plan) => {
           const discountedPrice = plan.discount
             ? plan.price - plan.discount
             : plan.price;
+
           const total = discountedPrice * plan.months;
           const actualTotal = total - plan.giftCard;
           const actualMonthly = (actualTotal / plan.months).toFixed(2);
 
+          const is150GB = plan.name === "150GB";
+
           return (
             <div
               key={plan.name}
-              className="bg-white shadow-lg rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              className={`
+                shadow-lg rounded-xl p-6 text-center transition-transform hover:scale-105
+                ${
+                  is150GB && isSMB
+                    ? "bg-gray-800 text-white"
+                    : "bg-white text-gray-900"
+                }
+              `}
             >
               <h2 className="text-xl font-semibold mb-2">{plan.name} Plan</h2>
+
+              {/* SMB Toggle only for 150GB */}
+              {is150GB && (
+                <div className="flex justify-center items-center mb-4">
+                  <span className="mr-2 text-sm">Consumer</span>
+                  <button
+                    onClick={() => setIsSMB(!isSMB)}
+                    className={`w-12 h-6 flex items-center rounded-full p-1 transition-colors
+                      ${isSMB ? "bg-green-500" : "bg-gray-400"}
+                    `}
+                  >
+                    <div
+                      className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform
+                        ${isSMB ? "translate-x-6" : ""}
+                      `}
+                    />
+                  </button>
+                  <span className="ml-2 text-sm font-bold">SMB</span>
+                </div>
+              )}
+
               <p className="text-lg mb-2">
                 ${plan.price} / month
                 {plan.discount && (
@@ -40,34 +79,45 @@ const PhonePlans = () => {
                 )}
               </p>
 
-              {/* Total cost calculation */}
-              <p className="text-gray-600 mb-1">
-                Total over {plan.months} months:{" "}
-                {plan.discount ? (
-                  <span className="text-red-600 font-bold">
-                    ${discountedPrice} x {plan.months} = ${total}
-                  </span>
-                ) : (
-                  `${plan.price} x ${plan.months} = $${total}`
-                )}
-              </p>
-
-              {/* Gift card deduction if any */}
-              {plan.giftCard > 0 ? (
-                <>
-                  <p className="text-gray-600 mb-1">
-                    Minus gift card: ${total} - ${plan.giftCard} =
-                    <div className="font-bold"> $ {actualTotal}</div>
-                  </p>
-                  <p className="text-gray-600 mb-1">
-                    Actual monthly: {actualTotal} ÷ {plan.months} =
-                    <div className="font-bold"> $ {actualMonthly}</div>
-                  </p>
-                </>
-              ) : (
-                <p className="text-gray-600 mb-1">
-                  Actual monthly: ${actualMonthly} (no gift card)
+              {/* Total calculation */}
+              <div className="mb-2">
+                <p className="text-sm opacity-80">
+                  Total over {plan.months} months:
                 </p>
+                {plan.discount ? (
+                  <p className="font-bold text-red-500">
+                    {discountedPrice} × {plan.months} = ${total}
+                  </p>
+                ) : (
+                  <p className="font-bold">
+                    {plan.price} × {plan.months} = ${total}
+                  </p>
+                )}
+              </div>
+
+              {/* Gift card */}
+              {plan.giftCard > 0 && (
+                <div className="mb-2">
+                  <p className="text-sm opacity-80">Minus Gift Card:</p>
+                  <p className="font-bold">
+                    ${total} − ${plan.giftCard} = ${actualTotal}
+                  </p>
+                </div>
+              )}
+
+              {/* Actual monthly */}
+              <div className="mt-2 pt-2 border-t">
+                <p className="text-sm opacity-80">Actual Monthly Cost:</p>
+                <p className="text-xl font-bold">${actualMonthly} / month</p>
+              </div>
+
+              {/* SMB badge */}
+              {is150GB && isSMB && (
+                <div className="mt-4">
+                  <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    SMB Offer Active ($700 Gift Card)
+                  </span>
+                </div>
               )}
             </div>
           );
