@@ -22,7 +22,7 @@ const PhonePlans = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
-      <h1 className="text-3xl font-bold mb-8">Compare Phone Plans</h1>
+      <h1 className="text-3xl font-bold mb-8">Compare SIM Plans</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl px-4">
         {plans.map((plan) => {
