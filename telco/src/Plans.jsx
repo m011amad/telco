@@ -107,7 +107,7 @@ const PhonePlans = () => {
 
               {/* Actual monthly */}
               <div className="mt-2 pt-2 border-t">
-                <p className="text-sm opacity-80">Actual Monthly Cost:</p>
+                <p className="text-sm opacity-80">Actual Monthly Value:</p>
                 <p className="text-xl font-bold">${actualMonthly} / month</p>
               </div>
 
