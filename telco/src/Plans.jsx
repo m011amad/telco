@@ -15,7 +15,7 @@ const PhonePlans = () => {
       name: "300GB",
       price: 99,
       months: 24,
-      giftCard: 1100,
+      giftCard: 1000,
       discount: 10, // $10 discount per month
     },
   ];
