@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const PhonePlans = () => {
-  const [isSMB, setIsSMB] = useState(false); // Toggle for 150GB plan
+  const [isSMB, setIsSMB] = useState(false); // Toggle for smb plan
 
   const plans = [
     { name: "60GB", price: 64, months: 24, giftCard: 0 },
@@ -11,12 +11,14 @@ const PhonePlans = () => {
       months: 24,
       giftCard: 600,
       discount: 10, // $10 discount per month
+      hasSMB: false,
     },
     {
       name: "300GB",
       price: 99,
       months: 24,
       giftCard: isSMB ? 1000 : 800, // SMB (business) logic
+      hasSMB: true,
     },
   ];
 
@@ -43,7 +45,9 @@ const PhonePlans = () => {
               className={`
                 shadow-lg rounded-xl p-6 text-center transition-transform hover:scale-105
                 ${
-                  is150GB | is300GB && isSMB
+                  ((is150GB && plans[1].hasSMB) ||
+                    (is300GB && plans[2].hasSMB)) &&
+                  isSMB
                     ? "bg-gray-800 text-white"
                     : "bg-white text-gray-900"
                 }
@@ -51,8 +55,9 @@ const PhonePlans = () => {
             >
               <h2 className="text-xl font-semibold mb-2">{plan.name} Plan</h2>
 
-              {/* SMB Toggle only for 150GB */}
-              {is150GB | is300GB && (
+              {/* SMB Toggle */}
+              {((is150GB && plans[1].hasSMB) ||
+                (is300GB && plans[2].hasSMB)) && (
                 <div className="flex justify-center items-center mb-4">
                   <span className="mr-2 text-sm">Consumer</span>
                   <button
@@ -115,12 +120,12 @@ const PhonePlans = () => {
               {/* SMB badge */}
               {isSMB && (
                 <div className="mt-4">
-                  {is150GB && (
+                  {is150GB && plans[1].hasSMB && (
                     <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       SMB Offer Active (${plans[1].giftCard} Gift Card)
                     </span>
                   )}
-                  {is300GB && (
+                  {is300GB && plans[2].hasSMB && (
                     <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       SMB Offer Active (${plans[2].giftCard} Gift Card)
                     </span>
