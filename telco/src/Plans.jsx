@@ -10,13 +10,13 @@ const PhonePlans = () => {
       price: 79,
       months: 24,
       giftCard: 600,
-      discount : 10 // $10 discount per month
+      discount: 10, // $10 discount per month
     },
     {
       name: "300GB",
       price: 99,
       months: 24,
-      giftCard: isSMB ? 1000 : 800,// SMB (business) logic
+      giftCard: isSMB ? 1000 : 800, // SMB (business) logic
     },
   ];
 
@@ -35,6 +35,7 @@ const PhonePlans = () => {
           const actualMonthly = (actualTotal / plan.months).toFixed(2);
 
           const is150GB = plan.name === "150GB";
+          const is300GB = plan.name === "300GB";
 
           return (
             <div
@@ -42,7 +43,7 @@ const PhonePlans = () => {
               className={`
                 shadow-lg rounded-xl p-6 text-center transition-transform hover:scale-105
                 ${
-                  is150GB && isSMB
+                  is150GB | is300GB && isSMB
                     ? "bg-gray-800 text-white"
                     : "bg-white text-gray-900"
                 }
@@ -51,7 +52,7 @@ const PhonePlans = () => {
               <h2 className="text-xl font-semibold mb-2">{plan.name} Plan</h2>
 
               {/* SMB Toggle only for 150GB */}
-              {is150GB && (
+              {is150GB | is300GB && (
                 <div className="flex justify-center items-center mb-4">
                   <span className="mr-2 text-sm">Consumer</span>
                   <button
