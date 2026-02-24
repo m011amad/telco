@@ -113,11 +113,18 @@ const PhonePlans = () => {
               </div>
 
               {/* SMB badge */}
-              {is150GB && isSMB && (
+              {isSMB && (
                 <div className="mt-4">
-                  <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    SMB Offer Active ($700 Gift Card)
-                  </span>
+                  {is150GB && (
+                    <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      SMB Offer Active (${plans[1].giftCard} Gift Card)
+                    </span>
+                  )}
+                  {is300GB && (
+                    <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      SMB Offer Active (${plans[2].giftCard} Gift Card)
+                    </span>
+                  )}
                 </div>
               )}
             </div>
