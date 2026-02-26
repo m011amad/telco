@@ -17,8 +17,8 @@ const PhonePlans = () => {
       name: "300GB",
       price: 99,
       months: 24,
-      giftCard: isSMB ? 1000 : 800, // SMB (business) logic
-      hasSMB: true,
+      giftCard: 1000, // isSMB ? 1000 : 800, // SMB (business) logic
+      hasSMB: false,
     },
   ];
 
@@ -36,6 +36,7 @@ const PhonePlans = () => {
           const actualTotal = total - plan.giftCard;
           const actualMonthly = (actualTotal / plan.months).toFixed(2);
 
+          const is60GB = plan.name === "60GB";
           const is150GB = plan.name === "150GB";
           const is300GB = plan.name === "300GB";
 
@@ -131,6 +132,11 @@ const PhonePlans = () => {
                       SMB Offer Active (${plans[2].giftCard} Gift Card)
                     </span>
                   )}
+                </div>
+              )}
+              {is60GB && (
+                <div className="mt-2 pt-2 border-t">
+                  <p>$150 off GOOGLE PIXEL 10A range (NEW ONLY)</p>
                 </div>
               )}
               {is150GB && (
