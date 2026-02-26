@@ -125,11 +125,25 @@ const PhonePlans = () => {
                       SMB Offer Active (${plans[1].giftCard} Gift Card)
                     </span>
                   )}
+
                   {is300GB && plans[2].hasSMB && (
                     <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       SMB Offer Active (${plans[2].giftCard} Gift Card)
                     </span>
                   )}
+                </div>
+              )}
+              {is150GB && (
+                <div className="mt-2 pt-2 border-t">
+                  <p>$1200 off SAMSUNG S26 Ultra</p>
+                  <p>$0 GOOGLE PIXEL 10A 128GB</p>
+                  <p>$850 off GOOGLE PIXEL 10A 256GB</p>
+                </div>
+              )}
+              {is300GB && (
+                <div className="mt-2 pt-2 border-t">
+                  <p>$1200 off SAMSUNG S26/S26+</p>
+                  <p>$1800 off SAMSUNG S26 Ultra</p>
                 </div>
               )}
             </div>
