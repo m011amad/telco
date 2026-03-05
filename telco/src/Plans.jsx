@@ -9,8 +9,8 @@ const PhonePlans = () => {
       name: "150GB",
       price: 79,
       months: 24,
-      giftCard: 600,
-      discount: 10, // $10 discount per month
+      giftCard: 550,
+      //discount: 10, // $10 discount per month
       hasSMB: false,
     },
     {
@@ -142,8 +142,6 @@ const PhonePlans = () => {
               {is150GB && (
                 <div className="mt-2 pt-2 border-t">
                   <p>$1200 off SAMSUNG S26 Ultra</p>
-                  <p>$0 GOOGLE PIXEL 10A 128GB</p>
-                  <p>$850 off GOOGLE PIXEL 10A 256GB</p>
                 </div>
               )}
               {is300GB && (
