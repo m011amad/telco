@@ -18,6 +18,7 @@ const PhonePlans = () => {
       price: 99,
       months: 24,
       giftCard: 1000, // isSMB ? 1000 : 800, // SMB (business) logic
+      discount: 10,
       hasSMB: false,
     },
   ];
@@ -147,8 +148,7 @@ const PhonePlans = () => {
               )}
               {is300GB && (
                 <div className="mt-2 pt-2 border-t">
-                  <p>$1200 off SAMSUNG S26/S26+</p>
-                  <p>$1700 off SAMSUNG S26 Ultra (Port)</p>
+                  <p>$1500 off SAMSUNG S26 Ultra (Port)</p>
                 </div>
               )}
             </div>
