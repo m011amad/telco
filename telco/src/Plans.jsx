@@ -9,7 +9,7 @@ const PhonePlans = () => {
       name: "150GB",
       price: 79,
       months: 24,
-      giftCard: isSMB ? 700 : 550,
+      giftCard: isSMB ? 700 : 600,
       //discount: 10, // $10 discount per month
       hasSMB: true,
     },
@@ -18,6 +18,14 @@ const PhonePlans = () => {
       price: 99,
       months: 24,
       giftCard: 1000, // isSMB ? 1000 : 800, // SMB (business) logic
+      discount: 10,
+      hasSMB: false,
+    },
+    {
+      name: "MBB69",
+      price: 69,
+      months: 24,
+      giftCard: 600,
       discount: 10,
       hasSMB: false,
     },
@@ -40,6 +48,7 @@ const PhonePlans = () => {
           const is60GB = plan.name === "60GB";
           const is150GB = plan.name === "150GB";
           const is300GB = plan.name === "300GB";
+          const isMBB69 = plan.name === "MBB69";
 
           return (
             <div
@@ -142,13 +151,13 @@ const PhonePlans = () => {
               )}
               {is150GB && (
                 <div className="mt-2 pt-2 border-t">
-                  <p>$1100 off SAMSUNG S26 Ultra</p>
-                  {isSMB && <p>$1200 off SAMSUNG S26 Ultra</p>}
+                  {!isSMB && <p>$699 off Nintendo Switch 2 MK</p>}
+                  {isSMB && <p></p>}
                 </div>
               )}
               {is300GB && (
                 <div className="mt-2 pt-2 border-t">
-                  <p>$1500 off SAMSUNG S26 Ultra (Port)</p>
+                  <p></p>
                 </div>
               )}
             </div>
