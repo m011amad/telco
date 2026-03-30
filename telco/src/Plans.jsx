@@ -64,12 +64,12 @@ const PhonePlans = () => {
                 }
               `}
             >
-              <h2 className="text-xl font-semibold mb-2">{plan.name} Plan</h2>
+              <h2 className="text-xl font-semibold mb-2 animate-bounce">{plan.name} Plan</h2>
 
               {/* SMB Toggle */}
               {((is150GB && plans[1].hasSMB) ||
                 (is300GB && plans[2].hasSMB)) && (
-                <div className="flex justify-center items-center mb-4">
+                <div className="flex justify-center items-center mb-4 animate-pulse">
                   <span className="mr-2 text-sm">Consumer</span>
                   <button
                     onClick={() => setIsSMB(!isSMB)}
