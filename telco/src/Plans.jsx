@@ -9,24 +9,24 @@ const PhonePlans = () => {
       name: "150GB",
       price: 79,
       months: 24,
-      giftCard: isSMB ? 700 : 600,
+      giftCard: isSMB ? 700 : 550,
       //discount: 10, // $10 discount per month
-      hasSMB: true,
+      hasSMB: false,
     },
     {
       name: "300GB",
       price: 99,
       months: 24,
-      giftCard: 1000, // isSMB ? 1000 : 800, // SMB (business) logic
-      discount: 10,
+      giftCard: 1100, // isSMB ? 1000 : 800, // SMB (business) logic
+      // discount: 10,
       hasSMB: false,
     },
     {
       name: "MBB69",
       price: 69,
       months: 24,
-      giftCard: 600,
-      discount: 10,
+      giftCard: 800,
+      // discount: 10,
       hasSMB: false,
     },
   ];
@@ -117,7 +117,7 @@ const PhonePlans = () => {
                 <div className="mb-2">
                   <p className="text-sm opacity-80">Minus Gift Card:</p>
                   <p className="font-bold">
-                    ${total} − ${plan.giftCard} = ${actualTotal}
+                    ${total} − <span className="text-green-600 animate-pulse">${plan.giftCard} </span> = ${actualTotal}
                   </p>
                 </div>
               )}
@@ -151,13 +151,20 @@ const PhonePlans = () => {
               )}
               {is150GB && (
                 <div className="mt-2 pt-2 border-t">
-                  {!isSMB && <p>$699 off Nintendo Switch 2 MK</p>}
+                  {!isSMB && <p></p>}
                   {isSMB && <p></p>}
                 </div>
               )}
               {is300GB && (
                 <div className="mt-2 pt-2 border-t">
-                  <p></p>
+                  <p>$0 Pixel 10 PRO XL 256GB (P)</p>
+                  <p>$1599 off Pixel PRO XL 512GB (P)</p>
+                  <p>$0 iPhone 16 128GB (P)</p>
+                </div>
+              )}
+              {isMBB69 && (
+                <div className="mt-2 pt-2 border-t">
+                  <p className="text-red-500 font-bold">Limit <span className="underline">1</span> per customer!</p>
                 </div>
               )}
             </div>
