@@ -18,7 +18,7 @@ const plansData = [
     months: 24,
     giftCard: 550,
     discount: 0,
-    hasSMB: true,
+    hasSMB: false,
     smbGiftCard: 700,
     limitOne: false,
     extras: [],
@@ -184,9 +184,9 @@ function PlanCard({ plan, index }) {
       >
         <div>
           <p className="text-sm font-medium text-gray-900">{plan.name} plan</p>
-          <p className="text-xs text-gray-400 mt-0.5">
+          {/* <p className="text-xs text-gray-400 mt-0.5">
             ${plan.price}/mo × {plan.months} months
-          </p>
+          </p> */}
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           <span className="text-sm font-medium text-gray-900">
@@ -317,7 +317,7 @@ function PlanCard({ plan, index }) {
 export default function PhonePlans() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
-      <div className="w-full max-w-md flex flex-col gap-3">
+      <div className="w-full px-6 flex flex-col md:flex-row md:items-start  gap-3">
         {plansData.map((plan, i) => (
           <PlanCard key={plan.name} plan={plan} index={i} />
         ))}
