@@ -120,7 +120,7 @@ export default function PlanCard({ plan, index }) {
         className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
       >
         <div>
-          <p className="text-sm font-medium text-gray-900">{plan.name} plan</p>
+          <p className="text-sm font-medium text-gray-900">{plan.name}</p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           <span className="text-sm font-medium text-gray-900">

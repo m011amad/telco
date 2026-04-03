@@ -18,14 +18,7 @@ async function fetchPlans() {
     hasSMB: p.has_smb,
     discount: p.discount,
     limitOne: p.limit_one,
-    extras: Array.isArray(p.extras)
-      ? p.extras
-      : typeof p.extras === "string"
-        ? p.extras
-            .replace(/^{|}$/g, "")
-            .split('","')
-            .map((s) => s.replace(/^"|"$/g, "").replace(/\\"/g, '"'))
-        : [],
+    extras: Array.isArray(p.extras) ? p.extras : [],
   }));
 }
 
