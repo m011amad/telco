@@ -83,7 +83,7 @@ function getMathLines(plan, isSMB) {
   }
   lines.push({ type: "divider" });
   lines.push({
-    text: `$${actualTotal}  ÷  ${plan.months} months  =  $${actualMonthly}/mo effective`,
+    text: `$${actualTotal}  ÷  ${plan.months} months  =  $${actualMonthly}/m`,
     type: "result",
   });
   return lines;
