@@ -51,14 +51,15 @@ export default function AdminLogin({ onLogin }) {
         {error && <p className="text-xs text-red-500">{error}</p>}
         <div className="flex justify-around">
           <button
+            type="button"
             onClick={handleLogin}
-            className="bg-gray-900 text-white px-15 text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="bg-gray-900 text-white px-4 w-28 text-sm  py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
           <a
             href="/"
-            className="bg-gray-900 text-white px-15 text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="bg-gray-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors w-28 text-center"
           >
             Back
           </a>

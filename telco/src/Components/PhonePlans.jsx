@@ -20,7 +20,7 @@ export default function PhonePlans() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
-      <div className="w-full px-1 flex flex-col md:flex-row md:items-start gap-3">
+      <div className="w-full px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3 md:items-start">
         {plansData.map((plan, i) => (
           <PlanCard key={plan.name} plan={plan} index={i} />
         ))}

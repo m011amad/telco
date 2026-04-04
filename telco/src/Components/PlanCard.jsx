@@ -141,9 +141,9 @@ export default function PlanCard({ plan, index }) {
               SMB
             </span>
           )}
-          {plan.limitOne && (
-            <span className="text-xs bg-red-50 text-red-700 px-2 py-0.5 rounded-full">
-              Limit 1
+          {plan.limitCount > 0 && (
+            <span className="text-xs bg-red-50 text-red-700 px-2 py-0.5 animate-pulse rounded-full">
+              Limit {plan.limitCount}
             </span>
           )}
           <svg
@@ -229,11 +229,11 @@ export default function PlanCard({ plan, index }) {
               </>
             )}
 
-            {plan.limitOne && (
+            {plan.limitCount > 0 && (
               <>
                 <div className="border-t border-gray-100" />
                 <p className="text-sm font-medium text-red-500 m-0">
-                  Limit <u>1</u> per customer
+                  Limit <u>{plan.limitCount}</u> per customer
                 </p>
               </>
             )}

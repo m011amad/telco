@@ -58,6 +58,7 @@ export default function AdminPlans() {
         has_smb: plan.has_smb,
         discount: Number(plan.discount),
         limit_one: plan.limit_one,
+        limit_count: Number(plan.limit_count),
         extras: plan.extras,
       })
       .eq("id", plan.id);
@@ -201,15 +202,16 @@ export default function AdminPlans() {
                 Has SMB toggle
               </label>
 
-              <label className="flex items-center gap-2 text-xs text-gray-500 pt-4">
+              <label className="flex flex-col gap-1 text-xs text-gray-500">
+                Limit per customer (0 = no limit)
                 <input
-                  type="checkbox"
-                  checked={plan.limit_one}
+                  type="number"
+                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  value={plan.limit_count ?? 0}
                   onChange={(e) =>
-                    updateField(plan.id, "limit_one", e.target.checked)
+                    updateField(plan.id, "limit_count", e.target.value)
                   }
                 />
-                Limit 1 per customer
               </label>
             </div>
 
