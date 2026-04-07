@@ -31,5 +31,6 @@ export function usePlans() {
   return useQuery({
     queryKey: ["plans"],
     queryFn: fetchPlans,
+    staleTime: 1000 * 10,
   });
 }
