@@ -113,7 +113,7 @@ export default function PlanCard({ plan, index }) {
   const [isSMB, setIsSMB] = useState(false);
   const { giftCard, actualMonthly } = calcPlan(plan, isSMB);
   const cardRef = useRef(null);
-  
+
   function handleToggle() {
     const newOpen = !open;
     setOpen(newOpen);
@@ -128,13 +128,19 @@ export default function PlanCard({ plan, index }) {
   }
 
   return (
-    <div ref={cardRef} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop" style={{ animationDelay: `${index * 100}ms` }}>
+    <div
+      ref={cardRef}
+      className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
       <button
         onClick={handleToggle}
         className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left"
       >
         <div>
-          <p className="text-sm font-medium text-gray-900 shrink-0">{plan.name}</p>
+          <p className="text-sm font-medium text-gray-900 shrink-0">
+            {plan.name}
+          </p>
         </div>
         <div className="flex items-center flex-wrap justify-end gap-1.5 flex-1">
           <span className="text-sm font-medium text-gray-900">
@@ -225,25 +231,27 @@ export default function PlanCard({ plan, index }) {
             )}
 
             <div className="border-t border-gray-100" />
-            {giftCard > 0 && (<div>
-              <p className="text-xs text-gray-400 font-medium">
-                How the math works
-              </p>
-              <MathBlock plan={plan} isSMB={isSMB} open={open} />
+            {giftCard > 0 && (
+              <div>
+                <p className="text-xs text-gray-400 font-medium">
+                  How the math works
+                </p>
+                <MathBlock plan={plan} isSMB={isSMB} open={open} />
 
-              {plan.extras?.length > 0 && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="text-xs text-gray-500 leading-relaxed">
-                    {plan.extras.map((e) => (
-                      <p key={e} className="m-0">
-                        {e}
-                      </p>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>)}
+                {plan.extras?.length > 0 && (
+                  <>
+                    <div className="border-t border-gray-100" />
+                    <div className="text-xs text-gray-500 text-center leading-relaxed">
+                      {plan.extras.map((e) => (
+                        <p key={e} className="m-0">
+                          {e}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
             {plan.limitCount > 0 && (
               <>
                 <div className="border-t border-gray-100" />
