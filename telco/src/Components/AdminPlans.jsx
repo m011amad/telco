@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import AdminLogin from "./AdminLogin";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function AdminPlans() {
+  const queryClient = useQueryClient();
   const [session, setSession] = useState(null);
   const [checkingSession, setCheckingSession] = useState(true);
   const [plans, setPlans] = useState([]);
@@ -70,6 +72,7 @@ export default function AdminPlans() {
     } else {
       setSaved(plan.id);
       setTimeout(() => setSaved(null), 2000); // clears after 2 seconds
+      queryClient.invalidateQueries(["plans"]);
     }
     setSaving(null);
   }
