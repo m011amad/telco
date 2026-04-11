@@ -211,24 +211,25 @@ export default function PlanCard({ plan, index }) {
             )}
 
             <div className="border-t border-gray-100" />
-            <p className="text-xs text-gray-400 font-medium">
-              How the math works
-            </p>
-            <MathBlock plan={plan} isSMB={isSMB} open={open} />
+            {giftCard > 0 && (<div>
+              <p className="text-xs text-gray-400 font-medium">
+                How the math works
+              </p>
+              <MathBlock plan={plan} isSMB={isSMB} open={open} />
 
-            {plan.extras?.length > 0 && (
-              <>
-                <div className="border-t border-gray-100" />
-                <div className="text-xs text-gray-500 leading-relaxed">
-                  {plan.extras.map((e) => (
-                    <p key={e} className="m-0">
-                      {e}
-                    </p>
-                  ))}
-                </div>
-              </>
-            )}
-
+              {plan.extras?.length > 0 && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="text-xs text-gray-500 leading-relaxed">
+                    {plan.extras.map((e) => (
+                      <p key={e} className="m-0">
+                        {e}
+                      </p>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>)}
             {plan.limitCount > 0 && (
               <>
                 <div className="border-t border-gray-100" />
