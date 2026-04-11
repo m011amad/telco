@@ -112,11 +112,25 @@ export default function PlanCard({ plan, index }) {
   const [open, setOpen] = useState(false);
   const [isSMB, setIsSMB] = useState(false);
   const { giftCard, actualMonthly } = calcPlan(plan, isSMB);
+  const cardRef = useRef(null);
+  
+  function handleToggle() {
+    const newOpen = !open;
+    setOpen(newOpen);
+    if (newOpen) {
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }, 300);
+    }
+  }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop" style={{ animationDelay: `${index * 100}ms` }}>
+    <div ref={cardRef} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop" style={{ animationDelay: `${index * 100}ms` }}>
       <button
-        onClick={() => setOpen(!open)}
+        onClick={handleToggle}
         className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left"
       >
         <div>
