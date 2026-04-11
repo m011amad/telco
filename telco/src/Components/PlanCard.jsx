@@ -114,7 +114,7 @@ export default function PlanCard({ plan, index }) {
   const { giftCard, actualMonthly } = calcPlan(plan, isSMB);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors">
+    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop" style={{ animationDelay: `${index * 100}ms` }}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left"
