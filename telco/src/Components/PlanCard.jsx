@@ -117,12 +117,12 @@ export default function PlanCard({ plan, index }) {
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
+        className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left"
       >
         <div>
-          <p className="text-sm font-medium text-gray-900">{plan.name}</p>
+          <p className="text-sm font-medium text-gray-900 shrink-0">{plan.name}</p>
         </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center flex-wrap justify-end gap-1.5 flex-1">
           <span className="text-sm font-medium text-gray-900">
             ${actualMonthly}/mo
           </span>
@@ -191,7 +191,7 @@ export default function PlanCard({ plan, index }) {
               <span className="font-medium">
                 ${plan.price}
                 {plan.discount > 0 && (
-                  <span className="text-red-500 text-xs ml-1">
+                  <span className="text-red-500 text-s ml-1">
                     −${plan.discount} off
                   </span>
                 )}
