@@ -199,7 +199,7 @@ export default function PlanCard({ plan, index }) {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-500">Contract</span>
-              <span className="font-medium">{plan.months} months</span>
+              <span className="font-medium">{plan.months} month(s)</span>
             </div>
             {giftCard > 0 && (
               <div className="flex justify-between text-sm">
