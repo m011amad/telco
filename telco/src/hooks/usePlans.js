@@ -4,14 +4,9 @@ import { supabase } from "../lib/supabase";
 async function fetchPlans() {
   const { data, error } = await supabase.from("plans").select("*").order("id");
 
-  //   console.log("data:", data);
-  //   console.log("error:", error);
 
   if (error) throw error;
-  //   console.log(
-  //     "raw plan:",
-  //     data.map((p) => ({ name: p.name, limit_count: p.limit_count })),
-  //   );
+
 
   return data.map((p) => ({
     name: p.name,
