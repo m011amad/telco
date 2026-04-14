@@ -34,30 +34,6 @@ export default function AdminPlans() {
       .order("id")
       .then(({ data }) => setPlans(data ?? []));
   }, [session]);
-  useEffect(() => {
-    if (!session) return;
-
-    let timer;
-
-    function resetTimer() {
-      clearTimeout(timer);
-      timer = setTimeout(
-        () => {
-          supabase.auth.signOut();
-        },
-        1000 * 60 * 30,
-      );
-    }
-
-    const events = ["mousemove", "keydown", "click", "scroll"];
-    events.forEach((e) => window.addEventListener(e, resetTimer));
-    resetTimer();
-
-    return () => {
-      clearTimeout(timer);
-      events.forEach((e) => window.removeEventListener(e, resetTimer));
-    };
-  }, [session]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
