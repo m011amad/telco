@@ -218,6 +218,11 @@ export default function PlanCard({ plan, index }) {
               </span>
             </div>
             <div className="flex justify-between text-sm">
+              <span className="text-gray-500">Data</span>
+              <span className="font-medium">{plan.data}GB</span>
+            </div>
+
+            <div className="flex justify-between text-sm">
               <span className="text-gray-500">Contract</span>
               <span className="font-medium">{plan.months} month(s)</span>
             </div>

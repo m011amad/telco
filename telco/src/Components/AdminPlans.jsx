@@ -35,26 +35,29 @@ export default function AdminPlans() {
       .then(({ data }) => setPlans(data ?? []));
   }, [session]);
   useEffect(() => {
-  if (!session) return;
+    if (!session) return;
 
-  let timer;
+    let timer;
 
-  function resetTimer() {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      supabase.auth.signOut();
-    }, 1000 * 60 * 30);
-  }
+    function resetTimer() {
+      clearTimeout(timer);
+      timer = setTimeout(
+        () => {
+          supabase.auth.signOut();
+        },
+        1000 * 60 * 30,
+      );
+    }
 
-  const events = ["mousemove", "keydown", "click", "scroll"];
-  events.forEach((e) => window.addEventListener(e, resetTimer));
-  resetTimer();
+    const events = ["mousemove", "keydown", "click", "scroll"];
+    events.forEach((e) => window.addEventListener(e, resetTimer));
+    resetTimer();
 
-  return () => {
-    clearTimeout(timer);
-    events.forEach((e) => window.removeEventListener(e, resetTimer));
-  };
-}, [session]);
+    return () => {
+      clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, resetTimer));
+    };
+  }, [session]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -83,6 +86,7 @@ export default function AdminPlans() {
         limit_one: plan.limit_one,
         limit_count: Number(plan.limit_count),
         extras: plan.extras,
+        data: Number(plan.data),
       })
       .eq("id", plan.id);
     console.log("result data:", data);
@@ -164,6 +168,15 @@ export default function AdminPlans() {
                   onChange={(e) =>
                     updateField(plan.id, "price", e.target.value)
                   }
+                />
+              </label>
+              <label className="flex flex-col gap-1 text-xs text-gray-500">
+                Data (GB)
+                <input
+                  type="number"
+                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  value={plan.data ?? 0}
+                  onChange={(e) => updateField(plan.id, "data", e.target.value)}
                 />
               </label>
 
