@@ -152,20 +152,20 @@ export default function PlanCard({ plan, index }) {
             </span>
           )}
           {giftCard > 0 && (
-            <span className="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 animate-pulse rounded-full">
               ${giftCard} gift
             </span>
           )}
           {plan.hasSMB && (
-            <span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 animate-pulse rounded-full">
               SMB
             </span>
           )}
-          {plan.limitCount > 0 && (
+          {/* {plan.limitCount > 0 && (
             <span className="text-xs bg-red-50 text-red-700 px-2 py-0.5 animate-pulse rounded-full">
               Limit {plan.limitCount}
             </span>
-          )}
+          )} */}
           <svg
             className={`w-4 h-4 stroke-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
             fill="none"
@@ -253,12 +253,9 @@ export default function PlanCard({ plan, index }) {
               </div>
             )}
             {plan.limitCount > 0 && (
-              <>
-                <div className="border-t border-gray-100" />
-                <p className="text-sm font-medium text-red-500 m-0">
-                  Limit <u>{plan.limitCount}</u> per customer
-                </p>
-              </>
+              <span className="text-xs bg-red-50 text-red-700 px-2 py-0.5 w-14 animate-pulse rounded-full">
+                Limit {plan.limitCount}
+              </span>
             )}
           </div>
         </div>
