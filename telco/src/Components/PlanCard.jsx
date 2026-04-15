@@ -130,12 +130,12 @@ export default function PlanCard({ plan, index }) {
   return (
     <div
       ref={cardRef}
-      className="bg-stone-200 border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop"
+      className="bg-stone-200 border border-stone-300 rounded-xl overflow-hidden hover:border-stone-700 transition-color animate-drop"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <button
         onClick={handleToggle}
-        className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left"
+        className="w-full flex items-start justify-between gap-3 px-5 py-3 text-left"
       >
         <div>
           <p className="text-sm font-medium text-gray-900 shrink-0">

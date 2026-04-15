@@ -1,5 +1,5 @@
 const Telco = () => (
-  <div className="flex items-center justify-between px-6 py-4 bg-stone-500 text-white">
+  <div className="flex items-center justify-between px-6 py-2 bg-stone-500 text-white">
     <span className="text-4xl">TELCO</span>
     <a
       href="/admin"
