@@ -23,25 +23,25 @@ export default function AdminLogin({ onLogin }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-sm flex flex-col gap-4">
-        <h1 className="text-xl font-semibold text-gray-900">Admin login</h1>
+    <div className="min-h-screen bg-stone-700 flex items-center justify-center">
+      <div className="bg-stone-200 rounded-xl border border-black-200 p-8 w-full max-w-sm flex flex-col gap-4">
+        <h1 className="text-xl font-semibold text-black-900">Admin login</h1>
 
-        <label className="flex flex-col gap-1 text-xs text-gray-500">
+        <label className="flex flex-col gap-1 text-xs text-stone-500">
           Email
           <input
             type="email"
-            className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+            className="border rounded-lg px-3 py-2 text-sm text-stone-500"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
 
-        <label className="flex flex-col gap-1 text-xs text-gray-500">
+        <label className="flex flex-col gap-1 text-xs text-stone-500">
           Password
           <input
             type="password"
-            className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+            className="border rounded-lg px-3 py-2 text-sm text-stone-500"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleLogin()}
@@ -53,13 +53,13 @@ export default function AdminLogin({ onLogin }) {
           <button
             type="button"
             onClick={handleLogin}
-            className="bg-gray-900 text-white px-4 w-28 text-sm  py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="bg-stone-900 text-white px-4 w-28 text-sm  py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
           <a
             href="/"
-            className="bg-gray-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors w-28 text-center"
+            className="bg-stone-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors w-28 text-center"
           >
             Back
           </a>

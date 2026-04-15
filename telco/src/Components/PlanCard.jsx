@@ -130,7 +130,7 @@ export default function PlanCard({ plan, index }) {
   return (
     <div
       ref={cardRef}
-      className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop"
+      className="bg-stone-200 border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-color animate-drop"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <button

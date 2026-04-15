@@ -80,21 +80,23 @@ export default function AdminPlans() {
 
   if (checkingSession)
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <p className="text-gray-400">Loading...</p>
+      <div className="min-h-screen bg-stone-100 flex items-center justify-center">
+        <p className="text-stone-400">Loading...</p>
       </div>
     );
 
   if (!session) return <AdminLogin onLogin={() => {}} />;
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-6">
+    <div className="min-h-screen bg-stone-200 py-10 px-6">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl pl-2 font-semibold">Edit Plans</h1>
+        <h1 className="text-2xl text-stone-700 pl-2 font-semibold">
+          Edit Plans
+        </h1>
         <div className="flex items-center gap-3">
           <a
             href="/"
-            className="text-gray-500 hover:text-gray-900 transition-colors"
+            className="text-stone-500 hover:text-stone-900 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +115,7 @@ export default function AdminPlans() {
           </a>
           <button
             onClick={handleLogout}
-            className="text-sm text-gray-500 hover:text-gray-900 border border-gray-200 px-3 py-1.5 rounded-lg transition-colors"
+            className="text-sm text-stone-500 hover:text-stone-900 border border-stone-400 px-3 py-1.5 rounded-lg transition-colors"
           >
             Log out
           </button>
@@ -123,44 +125,44 @@ export default function AdminPlans() {
         {plans.map((plan) => (
           <div
             key={plan.id}
-            className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3"
+            className="bg-white rounded-xl border border-stone-200 p-5 flex flex-col gap-3"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Name
                 <input
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.name}
                   onChange={(e) => updateField(plan.id, "name", e.target.value)}
                 />
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Price ($/mo)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.price}
                   onChange={(e) =>
                     updateField(plan.id, "price", e.target.value)
                   }
                 />
               </label>
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Data (GB)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.data ?? 0}
                   onChange={(e) => updateField(plan.id, "data", e.target.value)}
                 />
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Months
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.months}
                   onChange={(e) =>
                     updateField(plan.id, "months", e.target.value)
@@ -168,11 +170,11 @@ export default function AdminPlans() {
                 />
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Discount ($/mo)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.discount}
                   onChange={(e) =>
                     updateField(plan.id, "discount", e.target.value)
@@ -180,11 +182,11 @@ export default function AdminPlans() {
                 />
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Gift Card ($)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.gift_card}
                   onChange={(e) =>
                     updateField(plan.id, "gift_card", e.target.value)
@@ -192,11 +194,11 @@ export default function AdminPlans() {
                 />
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 SMB Gift Card ($)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.smb_gift_card ?? ""}
                   onChange={(e) =>
                     updateField(plan.id, "smb_gift_card", e.target.value)
@@ -204,7 +206,7 @@ export default function AdminPlans() {
                 />
               </label>
 
-              <label className="flex items-center gap-2 text-xs text-gray-500 pt-4">
+              <label className="flex items-center gap-2 text-xs text-stone-500 pt-4">
                 <input
                   type="checkbox"
                   checked={plan.has_smb}
@@ -215,11 +217,11 @@ export default function AdminPlans() {
                 Has SMB toggle
               </label>
 
-              <label className="flex flex-col gap-1 text-xs text-gray-500">
+              <label className="flex flex-col gap-1 text-xs text-stone-500">
                 Limit per customer (0 = no limit)
                 <input
                   type="number"
-                  className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                  className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                   value={plan.limit_count ?? 0}
                   onChange={(e) =>
                     updateField(plan.id, "limit_count", e.target.value)
@@ -228,11 +230,11 @@ export default function AdminPlans() {
               </label>
             </div>
 
-            <label className="flex flex-col gap-1 text-xs text-gray-500">
+            <label className="flex flex-col gap-1 text-xs text-stone-500">
               Extras (one per line)
               <textarea
                 rows={3}
-                className="border rounded-lg px-3 py-2 text-sm text-gray-900"
+                className="border rounded-lg px-3 py-2 text-sm text-stone-900"
                 value={(Array.isArray(plan.extras) ? plan.extras : []).join(
                   "\n",
                 )}
@@ -248,7 +250,7 @@ export default function AdminPlans() {
 
             <button
               onClick={() => savePlan(plan)}
-              className="self-end bg-gray-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+              className="self-end bg-stone-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-stone-700 transition-colors"
             >
               {saving === plan.id
                 ? "Saving..."
