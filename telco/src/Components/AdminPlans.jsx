@@ -44,6 +44,47 @@ export default function AdminPlans() {
       prev.map((p) => (p.id === id ? { ...p, [field]: value } : p)),
     );
   }
+  //adding
+
+  async function addPlan() {
+    const { data, error } = await supabase
+      .from("plans")
+      .insert({
+        name: "New Plan",
+        price: 0,
+        months: 24,
+        gift_card: 0,
+        smb_gift_card: 0,
+        has_smb: false,
+        discount: 0,
+        limit_count: 0,
+        limit_one: false,
+        extras: [],
+        data: 0,
+      })
+      .select()
+      .single();
+
+    if (error) {
+      alert("Error adding plan: " + error.message);
+    } else {
+      setPlans((prev) => [...prev, data]);
+    }
+  }
+
+  // deleting
+
+  async function deletePlan(id) {
+    if (!confirm("Are you sure you want to delete this plan?")) return;
+
+    const { error } = await supabase.from("plans").delete().eq("id", id);
+
+    if (error) {
+      alert("Error deleting plan: " + error.message);
+    } else {
+      setPlans((prev) => prev.filter((p) => p.id !== id));
+    }
+  }
 
   async function savePlan(plan) {
     setSaving(plan.id);
@@ -113,6 +154,14 @@ export default function AdminPlans() {
               <polyline points="12 19 5 12 12 5" />
             </svg>
           </a>
+          <button
+            type="button"
+            onClick={addPlan}
+            className="text-sm text-stone-500 hover:text-stone-900 border border-stone-400 px-3 py-1.5 rounded-lg transition-colors"
+          >
+            + Add plan
+          </button>
+
           <button
             onClick={handleLogout}
             className="text-sm text-stone-500 hover:text-stone-900 border border-stone-400 px-3 py-1.5 rounded-lg transition-colors"
@@ -247,17 +296,25 @@ export default function AdminPlans() {
                 }
               />
             </label>
-
-            <button
-              onClick={() => savePlan(plan)}
-              className="self-end bg-stone-900 text-white text-sm px-4 py-2 rounded-lg hover:bg-stone-700 transition-colors"
-            >
-              {saving === plan.id
-                ? "Saving..."
-                : saved === plan.id
-                  ? "Saved!"
-                  : "Save changes"}
-            </button>
+            <div className="flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => deletePlan(plan.id)}
+                className="text-sm text-red-500 hover:text-red-700 border border-red-200 px-4 py-2 rounded-lg transition-colors"
+              >
+                Delete plan
+              </button>
+              <button
+                onClick={() => savePlan(plan)}
+                className="text-sm text-stone-500 hover:text-stone-900 border border-stone-400 px-3 py-1.5 rounded-lg animate-pulse transition-colors"
+              >
+                {saving === plan.id
+                  ? "Saving..."
+                  : saved === plan.id
+                    ? "Saved!"
+                    : "Save changes"}
+              </button>
+            </div>
           </div>
         ))}
       </div>
