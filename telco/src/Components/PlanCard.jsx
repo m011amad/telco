@@ -185,7 +185,7 @@ export default function PlanCard({ plan, index }) {
         <div className="overflow-hidden">
           <div className="border-t border-gray-100 px-5 py-4 flex flex-col gap-3">
             {plan.hasSMB && (
-              <div className="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+              <div className="flex items-center justify-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
                 <span className="text-xs text-gray-500">Consumer</span>
                 <button
                   onClick={(e) => {
