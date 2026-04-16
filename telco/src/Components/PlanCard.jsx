@@ -83,6 +83,7 @@ function useTypewriter(lines, trigger) {
   return displayed;
 }
 
+
 function MathBlock({ plan, isSMB, open }) {
   const lines = getMathLines(plan, isSMB);
   const displayed = useTypewriter(lines, open);
@@ -113,6 +114,10 @@ export default function PlanCard({ plan, index }) {
   const [isSMB, setIsSMB] = useState(false);
   const { giftCard, actualMonthly } = calcPlan(plan, isSMB);
   const cardRef = useRef(null);
+
+  useEffect(() => {
+  if (!open) setIsSMB(false);
+}, [open]);
 
   function handleToggle() {
     const newOpen = !open;
